@@ -25,22 +25,30 @@ namespace View
             InitializeComponent();
         }
 
-        private void ConvertToCelsius(object sender, RoutedEventArgs e)
+        private void convertFahrenheit(object sender, RoutedEventArgs e)
         {
-            var fahrenheitString = fahrenheitTextBox.Text;
-            var fahrenheit = double.Parse(fahrenheitString);
+            var fahrenheit = double.Parse(fahrenheitTextBox.Text);
             var celsius = (fahrenheit - 32) / 1.8;
-            var celsiusString = celsius.ToString();
-            celsiusTextBox.Text = celsiusString;
+            celsiusTextBox.Text = celsius.ToString();
+            var kelvin = (fahrenheit + 459.67) / 1.8;
+            kelvinTextBox.Text = kelvin.ToString();
         }
 
-        private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
+        private void convertCelsius(object sender, RoutedEventArgs e)
         {
-            var celsiusString = celsiusTextBox.Text;
-            var celsius = double.Parse(celsiusString);
+            var celsius = double.Parse(celsiusTextBox.Text);
             var fahrenheit = celsius * 1.8 + 32;
-            var fahrenheitString = fahrenheit.ToString();
-            fahrenheitTextBox.Text = fahrenheitString;
+            fahrenheitTextBox.Text = fahrenheit.ToString();
+            var kelvin = celsius + 273.15;
+            kelvinTextBox.Text = kelvin.ToString();
+        }
+        private void convertKelvin(object sender, RoutedEventArgs e)
+        {
+            var kelvin = double.Parse(kelvinTextBox.Text);
+            var celsius = kelvin - 273.15;
+            celsiusTextBox.Text = celsius.ToString();
+            var fahrenheit = (kelvin * 1.8) - 459.67;
+            fahrenheitTextBox.Text = fahrenheit.ToString();
         }
     }
 }
